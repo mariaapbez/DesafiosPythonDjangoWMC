@@ -1,2 +1,2 @@
 # DesafiosPythonDjangoWMC
- Desafios e listas de esxercícios do curso Python e Django oferecido pela WoMakersCode
+ Desafios e listas de exercícios do curso Python e Django oferecido pela WoMakersCode
