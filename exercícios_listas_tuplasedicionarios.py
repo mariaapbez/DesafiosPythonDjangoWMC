@@ -5,119 +5,52 @@
 "Faça um Programa que peça as quatro notas de 10 alunos, calcule e armazene numa lista a média de cada aluno, imprima o número de alunos com média maior ou igual a 7.0.'''
 
 print('\nExercício 1 - Programa 1')
-def medias_aprovados():
-    lista_notas_1 = []
-    lista_notas_2 = []
-    lista_notas_3 = []
-    lista_notas_4 = []
-    lista_notas_5 = []
-    lista_notas_6 = []
-    lista_notas_7 = []
-    lista_notas_8 = []
-    lista_notas_9 = []
-    lista_notas_10 = []
+def medias_aprovados(aluno, contagem_nota):
+    lista_notas = [0, 0, 0, 0] # cria (inicializa) lista para as 4 notas de cada aluno
+    alunos = {} # cria dicionário com as  4 notas dos 10 alunos
+    aluno = 1 # inicia (declara) variável de contagem de aluno inserido
+    contagem_nota = 1 # inicia (declara) variável de contagem de nota inserida
+    notas_aluno_x = list
 
-    aluno_1 = int(input('\nAluno 1 - Insira uma nota: \n'))
-    lista_notas_1.append(aluno_1)
+    print(f'\nLançamento de notas do Semestre:')
 
-    for nota in range(3):
-        int(input('\nAluno 1 - Insira uma nota: \n'))
-        lista_notas_1.append(aluno_1)
-
+    while aluno <= 10: # inicia laço para obter notas de 10 alunos.
+        aluno_nota = int(input(f'\nAluno {aluno} - Insira a {contagem_nota}ª nota: \n')) # solicita inserção da primeira nota do aluno
+        lista_notas.pop(contagem_nota - 1) # remove nota de índice '0', para inserir a nota informada no seu lugar [(contagem nota = 1) - 1]
+        lista_notas.insert(contagem_nota - 1,aluno_nota) # insere nota digitada à lista de notas do aluno, na posição '0' [(contagem nota = 1) - 1]
+        contagem_nota += 1 # incrementa a contagem de notas do aluno em +1 (2ª nota)
+        for nota in range(3): # inicia o laço para solicitação das outras 3 notas a serem inseridas
+            aluno_nota = int(input(f'\nAluno {aluno} - Insira a {contagem_nota}ª nota: \n')) # solicita a inserção da 2ª, 3ª e 4ª nota no looping
+            lista_notas.pop(contagem_nota - 1) # remove nota de índice '1', para inserir a nota informada no seu lugar [(contagem nota = 1) += 1 - 1]
+            lista_notas.insert(contagem_nota - 1,aluno_nota) # insere nota digitada à lista de notas do aluno, na posição '1' [(contagem nota = 1) += 1 - 1]. No looping, como a contagem da nota está com incremento de + 1, as próximas posições serão '2' e '3', respectivamente.
+            contagem_nota += 1 # incrementa a contagem de notas do aluno em +1 (3ª nota e 4ª nota)
+        else:
+            notas_aluno_x = lista_notas.copy() # faz cópia da lista de notas gerada para o primeiro aluno. *A alteração de uma lista não modifica a outra.
+            alunos[f'{aluno}'] = notas_aluno_x # cria primeira chave no dicionario (aluno 1) e adiciona a lista copiada com as notas do primeiro aluno. No looping, adiciona as próximas listas de notas dos demais alunos.
+            contagem_nota = 1 # reinicia variável de contagem de nota para iniciar inserção das notas do aluno seguinte
+            aluno += 1 # incrementa variável de contagem de aluno em + 1 ( iniciar seguinte e demais, no looping)
+                       
     else:
-        aluno_2 = int(input('\nAluno 2 - Insira uma nota: \n'))
-        lista_notas_2.append(aluno_2)
+        print(f'\nLista de Alunos e respectivas notas:\n')
+        aluno = 1 # reinivia variável aluno, para utilização em contagens abaixo
+        for k, v in alunos.items(): # inicia laço para printar itens na biblioteca alunos
+            print(f'Aluno {aluno}: {v}') # printa os valores do dicionário alunos
 
-    for nota in range(3):
-        int(input('\nAluno 2 - Insira uma nota: \n'))
-        lista_notas_2.append(aluno_2)
+        print(f'\nMédia Individual:\n')
+        qtd_alunos_na_media = 0 # inicia (declara) variável para contagem de alunos com média maior que 7
+        for k, v in alunos.items(): # inicia laço para calcular média de alunos e verificar quantos estão acima da média.
+            nota_x = v # recupera valor referente a cada chave (aluno) no dicionário
+            media_nota_x = (sum(nota_x)) / 4 # calcula média do valor recuperado
+            print(f'Aluno {aluno}: {media_nota_x}')
+            aluno += 1 # incrementa contagem de aluno, para fazer cálculo dos demais
+            if  7.0 <= media_nota_x <= 10: # verifica se a nota é maior que 7
+                qtd_alunos_na_media += 1 # incremnta ou não +1 na variável, dependendo do resultadodo if
+        print(f'\n{qtd_alunos_na_media} Alunos tiveram média acima de 7,0.\n\n')
 
-    else:
-        aluno_3 = int(input('\nAluno 3 - Insira uma nota: \n'))
-        lista_notas_3.append(aluno_3)
-
-    for nota in range(3):
-        int(input('\nAluno 3 - Insira uma nota: \n'))
-        lista_notas_3.append(aluno_3)
-
-    else:
-        aluno_4 = int(input('\nAluno 4 - Insira uma nota: \n'))
-        lista_notas_4.append(aluno_4)
-
-    for nota in range(3):
-        int(input('\nAluno 4 - Insira uma nota: \n'))
-        lista_notas_4.append(aluno_4)
-
-    else:
-        aluno_5 = int(input('\nAluno 5 - Insira uma nota: \n'))
-        lista_notas_5.append(aluno_5)
-
-    for nota in range(3):
-        int(input('\nAluno 5 - Insira uma nota: \n'))
-        lista_notas_5.append(aluno_5)
-
-    else:
-        aluno_6 = int(input('\nAluno 6 - Insira uma nota: \n'))
-        lista_notas_6.append(aluno_6)
-
-    for nota in range(3):
-        int(input('\nAluno 6 - Insira uma nota: \n'))
-        lista_notas_6.append(aluno_6)
-
-    else:
-        aluno_7 = int(input('\nAluno 7 - Insira uma nota: \n'))
-        lista_notas_7.append(aluno_7)
-
-    for nota in range(3):
-        int(input('\nAluno 7 - Insira uma nota: \n'))
-        lista_notas_7.append(aluno_7)
-
-    else:
-        aluno_8 = int(input('\nAluno 8 - Insira uma nota: \n'))
-        lista_notas_8.append(aluno_8)
-
-    for nota in range(3):
-        int(input('\nAluno 8 - Insira uma nota: \n'))
-        lista_notas_8.append(aluno_8)
-
-    else:
-        aluno_9 = int(input('\nAluno 9 - Insira uma nota: \n'))
-        lista_notas_9.append(aluno_9)
-
-    for nota in range(3):
-        int(input('\nAluno 9 - Insira uma nota: \n'))
-        lista_notas_9.append(aluno_9)
-
-    else:
-        aluno_10 = int(input('\nAluno 10 - Insira uma nota: \n'))
-        lista_notas_10.append(aluno_10)
-
-    for nota in range(3):
-        int(input('\nAluno 10 - Insira uma nota: \n'))
-        lista_notas_10.append(aluno_10)
-
-    else:
-        media_1 = sum(lista_notas_1)/4
-        media_2 = sum(lista_notas_2)/4
-        media_3 = sum(lista_notas_3)/4
-        media_4 = sum(lista_notas_4)/4
-        media_5 = sum(lista_notas_5)/4
-        media_6 = sum(lista_notas_6)/4
-        media_7 = sum(lista_notas_7)/4
-        media_8 = sum(lista_notas_8)/4
-        media_9 = sum(lista_notas_9)/4
-        media_10 = sum(lista_notas_10)/4
-
-        lista_media_alunos = [media_1, media_2,media_3,media_4,media_5,media_6, media_7,media_8,media_9,media_10]
         
-        qtd_alunos_na_media = 0
-        for media in lista_media_alunos:
-            if 7.0 <= media <=10:
-                qtd_alunos_na_media += 1
-
-        print(f'\n{qtd_alunos_na_media} alunos tiveram média acima de 7,0.\n\n')
-
-medias_aprovados()
+aluno = int
+contagem_nota = int
+medias_aprovados(aluno, contagem_nota)
 
 
 # Exercício 2: ----------------------------------------------------------------------------------
