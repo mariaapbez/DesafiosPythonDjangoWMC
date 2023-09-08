@@ -134,7 +134,7 @@ def exercicio_6():
     print()
 
     print('c)')
-    consultas = cursor.execute('SELECT MAX(saldo) AS maior_saldo FROM clientes')
+    consultas = cursor.execute('SELECT nome FROM clientes WHERE saldo = (SELECT MAX(saldo) AS maior_saldo FROM clientes)')
     for clientes in consultas:
         print(clientes)
     print()
