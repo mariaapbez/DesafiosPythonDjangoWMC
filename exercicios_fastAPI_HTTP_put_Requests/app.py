@@ -70,7 +70,24 @@ async def remove_user(id: UUID):
         detail=f"Usuário com id {id} não encontrado"
     )
 
+# ATIVIDADE EXTRA HTTP PUT REQUESTS
 
+# Exercício 1: ----------------------------------------------------------------------------------
+
+@app.put("/api/users/{id}") # atualizar informações do usuário (UPDATE)
+async def update_user(id: UUID):
+    for user in db:
+        if user.id == id:
+            user.email = "email@yahoo.com"
+            return user
+        
+    raise HTTPException(
+        status_code=404,
+        detail=f"Usuário com id {id} não encontrado"
+    )
+
+
+# ----------------------------------------------------------------------------------
 # código do primeiro exemplo
 
 '''class Item(BaseModel):
