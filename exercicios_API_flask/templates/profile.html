@@ -3,14 +3,38 @@
 {% block content %}
 <div class="row">
 
-        <div class ="col-sm-3 col-6">
+        <div class ="col-sm-3 col-4">
             <img src="{{profile.image}}" alt="{{profile.name}}" class="img-fluid img-thumbnail" />
         </div>
 
-        <div class ="col-sm-3 col-6">
-            <h1 class="h5">{{profile.name}}</h1>
+<!--Exercício 5: ---------------------------------------------------------------------------------->
+
+<!--Na página de perfil do personagem, adicione as seguintes informações: espécie, gênero, origem e localização. As informações de origem, localização e episódios em que o personagem aparece devem conter um link para a página de perfil da localização.-->
+
+        <div class ="col-sm-6 col-12">
+            <ul>
+                <li>
+                    <h1 class="h5">{{profile.name}}</h1>
+                    <h6>Espécie: {{profile.species}}</h6>
+                    <h6>Gênero: {{profile.gender}}</h6>
+
+                        {% for item in character_ori %}
+                    <h6>Origem:<a href="/location/{{item.id}}"> {{profile.origin["name"]}}</a></h6>
+                        {% endfor %}
+
+                        {% for item in character_loc %}
+                    <h6>Localização:<a href="/location/{{item.id}}"> {{profile.location["name"]}}</a></h6>
+                        {% endfor %}
+                </li>
+                <li>
+                    <h1 class="h5">Aparece nos Episódios:</h1>
+                    
+                        {% for episode in character_eps %}
+                    <h6><a href="/episode/{{episode.id}}"> {{episode["name"]}}</a></h6>
+                        {% endfor %}
+                </li>
+
+            </ul>
         </div>
-   
-</div>    
+        
 {% endblock %}
-  

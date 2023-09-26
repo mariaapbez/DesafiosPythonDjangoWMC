@@ -1,0 +1,50 @@
+<!--Exercício 3: ---------------------------------------------------------------------------------->
+
+<!--Criar uma nova rota para exibir o perfil da localização. A rota deverá ser acessível através do caminho /location/<id>. A página deverá ser renderizada através do template location.html. A página deverá conter as seguintes informações: nome, tipo, dimensão e uma lista com os personagens que aparecem na localização. A lista deverá conter um link para a página de perfil do personagem.-->
+
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+
+    <div class ="col-sm-6 col-6">
+        <ul>
+            <li>
+                <h1 class="h5">{{location.name}}</h1>
+                <h6>Tipo: {{location.type}}</h6>
+                <h6>Dimensão: {{location.dimension}}</h6>
+                <h6>Moradores:</h6>
+                
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class ="col-sm-6 col-6">
+        <ul>
+            <li>
+                <h1 class="h5">Moradores:</h1>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="row">
+    {% for resident in residents %}
+
+    <div class ="col-sm-3 col-6">
+            
+            <a href="/profile/{{resident.id}}" class="=btn btn-primary"><img src="{{resident.image}}" alt="{{resident.name}}" class="img-fluid img-thumbnail" /></a>
+
+            <h3 class="h5">{{resident.name}}</h3>
+
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

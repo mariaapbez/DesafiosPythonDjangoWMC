@@ -1,0 +1,30 @@
+<!--Exercício 2: ---------------------------------------------------------------------------------->
+
+<!--Criar uma nova rota para listar os episódios. A rota deverá ser acessível através do caminho /episodes. A página deverá ser renderizada através do template episodes.html. A página deverá conter uma tabela com as seguintes informações: nome, data de lançamento e código. A tabela deverá conter um link para a página de perfil do episódio.-->
+
+{% extends "layout.html" %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col-sm-6 col-6">Id Episódio</th>
+            <th scope="col-sm-6 col-6">Nome</th>
+            <th scope="col-sm-6 col-6">Exibição (Lançamento)</th>
+            <th scope="col-sm-6 col-6">Código</th>
+          </tr>
+    </thead>
+
+        {% for episode in episodes %}
+        <tbody>
+            <tr>
+            <th scope="row">{{episode.id}}</th>
+            <td><a href="/episode/{{episode.id}}">{{episode.name}}</a></td>
+            <td>{{episode.air_date}}</td>
+            <td>{{episode.episode}}</td>
+            </tr>
+        <tbody>
+     
+    {% endfor %}
+</table> 
+{% endblock %}

@@ -1,0 +1,30 @@
+<!--Exercício 1: ---------------------------------------------------------------------------------->
+
+<!--Criar uma nova rota para listar as localizações. A rota deverá ser acessível através do caminho /locations. A página deverá ser renderizada através do template locations.html. A página deverá conter uma tabela com as seguintes informações: nome, tipo e dimensão. A tabela deverá conter um link para a página de perfil da localização.-->
+
+{% extends "layout.html" %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col-sm-6 col-6">Id Localização</th>
+            <th scope="col-sm-6 col-6">Nome</th>
+            <th scope="col-sm-6 col-6">Tipo</th>
+            <th scope="col-sm-6 col-6">Dimensão</th>
+          </tr>
+    </thead>
+
+        {% for location in locations %}
+        <tbody>
+            <tr>
+            <th scope="row">{{location.id}}</th>
+            <td><a href="/location/{{location.id}}">{{location.name}}</a></td>
+            <td>{{location.type}}</td>
+            <td>{{location.dimension}}</td>
+            </tr>
+        <tbody>
+     
+    {% endfor %}
+</table> 
+{% endblock %}

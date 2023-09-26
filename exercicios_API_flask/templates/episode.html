@@ -1,0 +1,50 @@
+<!--Exercício 4: ---------------------------------------------------------------------------------->
+
+<!--Criar uma nova rota para exibir o perfil do episódio. A rota deverá ser acessível através do caminho /episode/<id>. A página deverá ser renderizada através do template episode.html. A página deverá conter as seguintes informações: nome, data de lançamento, código e uma lista com os personagens que aparecem no episódio. A lista deverá conter um link para a página de perfil do personagem.-->
+
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+
+    <div class ="col-sm-6 col-6">
+        <ul>
+            <li>
+                <h1 class="h5">{{episode.name}}</h1>
+                <h6>Exibição (Lançamento): {{episode.air_date}}</h6>
+                <h6>Código: {{episode.episode}}</h6>
+                <h6>Personagens:</h6> 
+                    
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class ="col-sm-6 col-6">
+        <ul>
+            <li>
+                <h1 class="h5">Personagens:</h1>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="row">
+    {% for character in characters %}
+
+    <div class ="col-sm-3 col-6">
+            
+            <a href="/profile/{{character.id}}" class="=btn btn-primary"><img src="{{character.image}}" alt="{{character.name}}" class="img-fluid img-thumbnail" /></a>
+
+            <h3 class="h5">{{character.name}}</h3>
+
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
